@@ -1,0 +1,14 @@
+{
+  "name": "web-development-guide",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:p-duke/web-development-guide.git",
+  "author": "p-duke <peteraaronduke@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "fix": "npx prettier README.md --write"
+  },
+  "devDependencies": {
+    "prettier": "1.19.1"
+  }
+}
