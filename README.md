@@ -14,6 +14,8 @@ moved to the top of their scope before code execution.<sup>[2]</sup> This is not
 - Only the actual declarations are hoisted
 - Any assignments are left where they are
 - A declaration is hoisted with the `undefined` value
+- One of the advantages is it allows you to use a function before you declare it in your code
+- Javascript only hoists declarations not initializations<sup>[1]</sup>
 
 Function Hoisting
 
@@ -67,6 +69,15 @@ var foo = function() {
   console.log('Hello');
 };
 ```
+
+Only `y` is hoisted since declared but x is not hoisted:
+
+```javascript
+x = 1
+console.log(x + ' ' + y); // '1 undefined'
+var y = 2;
+```
+
 ### Sources
 [1]: https://developer.mozilla.org/en-US/docs/Glossary/Hoisting "MDN Web Docs"
 [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
