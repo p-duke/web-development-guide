@@ -6,7 +6,8 @@
   "author": "p-duke <peteraaronduke@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "fix": "npx prettier README.md --write"
+    "fix": "npx prettier README.md --write",
+    "grip-server": "grip --pass=$(echo GIT_TOKEN)"
   },
   "devDependencies": {
     "prettier": "1.19.1"
