@@ -8,7 +8,7 @@
 
 ### Hoisting
 
-A general definition of hoisting is that its a JavaScript mechanism where
+A general definition of hoisting is that it's a JavaScript mechanism where
 variables and function declarations are moved to the top of their scope before
 code execution.<sup>[2]</sup> This is not in fact what happens. Instead, the
 variable and function declarations are put into memory during the compile phase,
@@ -18,14 +18,11 @@ TLDR;
 
 - Javascript only hoists the actual declarations but initializations or
   assignments are left where they are<sup>[1]</sup>
-- A declaration is hoisted with the `undefined` value
-- One of the advantages is it allows you to use a function before you declare it
-  in your code are not hoisted
-- undeclared variable is assigned the value undefined at execution and is also
-  of type undefined.<sup>[3]</sup>
-- ReferenceError is thrown when trying to access a previously undeclared
+- An undeclared variable is assigned the value `undefined` at execution and is
+  also of type `undefined`.<sup>[3]</sup>
+- A ReferenceError is thrown when trying to access a previously undeclared
   variable.<sup>[3]</sup>
-- variable declarations are processed before any code is executed.<sup>[3]</sup>
+- Variable declarations are processed before any code is executed.<sup>[3]</sup>
 - Assigning a value to an undeclared variable implicitly creates it as a global
   variable when the assignment is executed. This means that, all undeclared
   variables are global variables.<sup>[3]</sup>
@@ -34,20 +31,20 @@ TLDR;
 - In es6 we can now use `let` and `const` which also prohibits the use of an
   undeclared variable
 - Variables declared with `let` and `const` remain uninitialised at the
-  beginning of execution whilst variables declared with var are initialised with
-  a value of _undefined_.<sup>[3]</sup>
+  beginning of execution whilst variables declared with `var` are initialised
+  with a value of _undefined_.<sup>[3]</sup>
 
 Function Hoisting
 
 - Javascript functions can be loosly classified as a `declaration` or
   `expression`
-- Function declarations are also hoisted but functions that are assigned values
+- Function declarations are also hoisted but function expressions are not
+- One of the advantages is it allows you to use a function before you declare it
+  in your code are not hoisted.
 
 Order of Precedence:
 
 - Variable assignment takes precendence over function declaration<sup>[3]</sup>
-- Function declarations take precendence over variable
-  declarations<sup>[3]</sup>
 - Function declarations are hoisted over variable declarations but not over
   variable assignments.<sup>[3]</sup>
 
@@ -58,75 +55,10 @@ Recommendations
 - Make sure to declare and initialize a variable before using it.
 - Enable the use of _strict mode_ with es5 by using `"use strict"` at the top of
   the file can help expose undeclared variables.
+- Use `let` and `const` over `var` to declare and initialize variables with es6
+  to catch the use of undeclared variables.
 
 ### Examples
-
-Variable assignment over function declaration:
-
-```javascript
-var double = 22;
-
-function double(num) {
-  return num * 2;
-}
-
-console.log(typeof double); // Output: number
-```
-
-Function declaration over variable declarations:
-
-```javascript
-var double;
-
-function double(num) {
-  return num * 2;
-}
-
-console.log(typeof double); // Output: function
-```
-
-A function declaration is hoisted and can therefore be called before declared:
-
-```javascript
-hoisted(); // Output: I've been hoisted!
-
-function hoisted() {
-  console.log('I've been hoisted!');
-}
-```
-
-A function expression is not hoisted and cannot be called before declared:
-
-```javascript
-expression(); // Output: "TypeError: expression is not a function
-
-var expression = function() {
-  console.log('Will this work?');
-};
-```
-
-Usage of `let` in es6 will not allow use of undeclared variables:
-
-```javascript
-console.log(hoist); // Output: ReferenceError: hoist is not defined
-let hoist = 'The variable has been hoisted.';
-```
-
-With `const` the same rules except initialization must occur as well:
-
-```javascript
-const PI;
-console.log(PI); // Ouput: SyntaxError: Missing initializer in const declaration
-PI=3.142;
-
-function getCircumference(radius) {
-  console.log(circumference)
-  circumference = PI*radius*2;
-  const PI = 22/7;
-}
-
-getCircumference(2) // ReferenceError: circumference is not defined
-```
 
 Assigning a value to an undeclared variable implicitly puts it in the global
 scope.
@@ -206,6 +138,73 @@ Only `y` is hoisted since declared but x is not hoisted:
 x = 1;
 console.log(x + ' ' + y); // '1 undefined'
 var y = 2;
+```
+
+Variable assignment over function declaration:
+
+```javascript
+var double = 22;
+
+function double(num) {
+  return num * 2;
+}
+
+console.log(typeof double); // Output: number
+```
+
+Function declaration over variable declarations:
+
+```javascript
+var double;
+
+function double(num) {
+  return num * 2;
+}
+
+console.log(typeof double); // Output: function
+```
+
+A function declaration is hoisted and can therefore be called before declared:
+
+```javascript
+hoisted(); // Output: I've been hoisted!
+
+function hoisted() {
+  console.log('I've been hoisted!');
+}
+```
+
+A function expression is not hoisted and cannot be called before declared:
+
+```javascript
+expression(); // Output: "TypeError: expression is not a function
+
+var expression = function() {
+  console.log('Will this work?');
+};
+```
+
+Usage of `let` in es6 will not allow use of undeclared variables:
+
+```javascript
+console.log(hoist); // Output: ReferenceError: hoist is not defined
+let hoist = 'The variable has been hoisted.';
+```
+
+With `const` the same rules except initialization must occur as well:
+
+```javascript
+const PI;
+console.log(PI); // Ouput: SyntaxError: Missing initializer in const declaration
+PI=3.142;
+
+function getCircumference(radius) {
+  console.log(circumference)
+  circumference = PI*radius*2;
+  const PI = 22/7;
+}
+
+getCircumference(2) // ReferenceError: circumference is not defined
 ```
 
 ### Sources
