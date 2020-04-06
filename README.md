@@ -210,10 +210,8 @@ getCircumference(2) // ReferenceError: circumference is not defined
 ### Sources
 
 [1]: https://developer.mozilla.org/en-US/docs/Glossary/Hoisting 'MDN Web Docs'
-
-[MDN Web Docs](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting) [2]:
-https://www.sitepoint.com/back-to-basics-javascript-hoisting/ "Back To Basics"
+[MDN Web Docs](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting) 
+[2]: https://www.sitepoint.com/back-to-basics-javascript-hoisting/ "Back To Basics"
 [Back To Basics](https://www.sitepoint.com/back-to-basics-javascript-hoisting/)
 [3]: https://scotch.io/tutorials/understanding-hoisting-in-javascript
-"Understanding Hoisting in Javascript"
 [Understanding Hoisting in Javascript](https://scotch.io/tutorials/understanding-hoisting-in-javascript)

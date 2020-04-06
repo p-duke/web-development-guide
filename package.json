@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "fix": "npx prettier README.md --write",
-    "grip-server": "grip --pass=$(echo GIT_TOKEN)"
+    "grip-server": "grip --pass=$(echo $GIT_TOKEN)"
   },
   "devDependencies": {
     "prettier": "1.19.1"
